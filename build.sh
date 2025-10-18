@@ -37,7 +37,7 @@ function KERNEL_COMPILE() {
 	export PATH="${PWD}/clang/bin:$PATH"
 
 	# Make the config
-	make O=out ARCH=arm64 cselene_defconfig
+	make O=out ARCH=arm64 selene_defconfig
 
 	# Build the kernel with clang and log output
 	make -j$(nproc --all) O=out ARCH=arm64 CC=clang LD=ld.lld AS=llvm-as AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- LLVM=1 LLVM_IAS=1 2>&1 | tee -a out/compile.log
